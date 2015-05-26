@@ -8,8 +8,14 @@ var leapYear = function(year) {
 
 $(document).ready(function() {
   $("form#leap-year").submit(function(event) {
-    var year = parseInt($("input#year").val());
+    var yearString = $("input#year").val();
+    var year = parseInt(yearString);
     var result = leapYear(year);
+
+    if (isNaN(year)) {
+      result = false;
+      year = yearString;
+    }
 
     $(".year").text(year);
     $(".not").text("");
